@@ -43,4 +43,22 @@ public class RoomService {
 	public RoomDto createRoom(Room room) {
 		return convertEntityToDto(roomRepository.save(room));
 	}
+
+	public RoomDto updateRoom(Long id, Room room) {
+		Room existingRoom = roomRepository.findById(id).orElse(null);
+		if (existingRoom != null) {
+			existingRoom.setFloor(room.getFloor());
+			existingRoom.setRoomNumber(room.getRoomNumber());
+			existingRoom.setRoomType(room.getRoomType());
+			existingRoom.setCapacity(room.getCapacity());
+			existingRoom.setDescription(room.getDescription());
+			existingRoom.setImageUrl(room.getImageUrl());
+			existingRoom.setName(room.getName());
+			existingRoom.setStatus(room.getStatus());
+			existingRoom.setPrice(room.getPrice());
+
+			return convertEntityToDto(roomRepository.save(existingRoom));
+		}
+		return null;
+	}
 }

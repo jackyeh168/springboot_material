@@ -13,6 +13,8 @@ import com.example.demo.entity.Room;
 import com.example.demo.service.RoomService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/rooms")
@@ -28,5 +30,10 @@ public class RoomController {
 	@PostMapping
 	public RoomDto createRoom(@RequestBody Room room) {
 		return roomService.createRoom(room);
+	}
+
+	@PutMapping("/{id}")
+	public RoomDto updateRoom(@PathVariable Long id, @RequestBody Room room) {
+		return roomService.updateRoom(id, room);
 	}
 }
