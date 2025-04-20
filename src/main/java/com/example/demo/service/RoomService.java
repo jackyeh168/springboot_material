@@ -39,4 +39,8 @@ public class RoomService {
 	public List<RoomDto> getAllRooms() {
 		return convertEntityListToDto(roomRepository.findAll());
 	}
+
+	public RoomDto createRoom(Room room) {
+		return convertEntityToDto(roomRepository.save(room));
+	}
 }
