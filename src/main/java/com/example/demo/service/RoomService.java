@@ -61,4 +61,12 @@ public class RoomService {
 		}
 		return null;
 	}
+
+	public void deleteRoom(Long id) {
+		Room room = roomRepository.findById(id).orElse(null);
+		if (room != null) {
+			roomRepository.delete(room);
+		}
+		return;
+	}
 }
